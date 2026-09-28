@@ -1,0 +1,8 @@
+{
+  "mcpServers": {
+    "forest": {
+      "type": "http",
+      "url": "https://api.forest.dev/mcp"
+    }
+  }
+}

@@ -1,0 +1,14 @@
+{
+  "name": "forest",
+  "displayName": "Forest",
+  "version": "0.1.0",
+  "description": "Find, vet, install and publish Forest packages for Roblox and UEFN. Connects the Forest MCP server and adds a skill that checks Forest before building general-purpose code and suggests publishing modules worth reusing.",
+  "author": {
+    "name": "Forest Software LLC",
+    "url": "https://forest.dev"
+  },
+  "homepage": "https://docs.forest.dev/features/ai-agents",
+  "repository": "https://github.com/Forest-Software-LLC/forest-claude-plugin",
+  "license": "MIT",
+  "keywords": ["roblox", "uefn", "luau", "verse", "packages", "package-manager", "mcp"]
+}

@@ -1,0 +1,14 @@
+{
+  "name": "forest",
+  "description": "Plugins for Forest, the package manager for Roblox and UEFN",
+  "owner": {
+    "name": "Forest Software LLC"
+  },
+  "plugins": [
+    {
+      "name": "forest",
+      "source": "./plugins/forest",
+      "description": "Find, vet, install and publish Forest packages for Roblox and UEFN, with the Forest MCP server and a skill for when to use it"
+    }
+  ]
+}
