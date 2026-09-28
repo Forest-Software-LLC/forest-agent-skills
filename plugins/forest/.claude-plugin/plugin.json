@@ -8,7 +8,7 @@
     "url": "https://forest.dev"
   },
   "homepage": "https://docs.forest.dev/features/ai-agents",
-  "repository": "https://github.com/Forest-Software-LLC/forest-claude-plugin",
+  "repository": "https://github.com/Forest-Software-LLC/forest-agent-skills",
   "license": "MIT",
   "keywords": ["roblox", "uefn", "luau", "verse", "packages", "package-manager", "mcp"]
 }
