@@ -3,26 +3,21 @@
 [Forest](https://forest.dev) is the package manager for Roblox and UEFN. This repo teaches AI coding agents when and how to use it.
 
 - **The `forest-packages` skill.** Before writing general-purpose code such as a signal, promise, networking or data store module, the agent checks Forest for a well-used package and shows you what it found. When you've written a self-contained module other projects could reuse, it suggests publishing it, and publishes only when you say so. It also covers installing, requiring and publishing on Roblox (Luau) and UEFN (Verse).
-- **The `forest` plugin for Claude.** The skill plus a connection to the Forest MCP server (`https://api.forest.dev/mcp`), so Claude can search packages, read their READMEs and source, check licenses, list your own packages, and publish new ones.
+- **The `forest` plugin.** The skill plus a connection to the Forest MCP server (`https://api.forest.dev/mcp`), so your agent can search packages, read their READMEs and source, check licenses, list your own packages, and publish new ones. It installs in Claude Code, the Claude apps and Codex.
 
 The skill uses the open [Agent Skills](https://agentskills.io) format, so it works in Claude, Cursor, Codex, GitHub Copilot, Gemini CLI and other agents that support skills.
 
 ## Install
 
+Install the skill together with the MCP server. The [Forest docs](https://docs.forest.dev/features/ai-agents) walk through each agent step by step.
+
 ### Claude Code
-
-```
-/plugin marketplace add Forest-Software-LLC/forest-agent-skills
-/plugin install forest@forest-agent-skills
-```
-
-Claude Code 2.1.275 and later can do both in one step:
 
 ```
 /plugin install forest --marketplace Forest-Software-LLC/forest-agent-skills
 ```
 
-Or from your shell:
+On Claude Code older than 2.1.275, run these in your terminal instead:
 
 ```bash
 claude plugin marketplace add Forest-Software-LLC/forest-agent-skills
@@ -33,25 +28,47 @@ claude plugin install forest@forest-agent-skills
 
 Open **Customize > Plugins**, choose **Add > Add marketplace**, and enter `Forest-Software-LLC/forest-agent-skills`. Add the **forest** plugin, then open its **Connectors** tab to add and connect the Forest connector.
 
+### Codex
+
+```bash
+codex plugin marketplace add Forest-Software-LLC/forest-agent-skills
+codex plugin add forest@forest-agent-skills
+```
+
+### Cursor
+
+[Add the Forest MCP server to Cursor](https://cursor.com/install-mcp?name=forest&config=eyJ1cmwiOiJodHRwczovL2FwaS5mb3Jlc3QuZGV2L21jcCJ9), then add the skill:
+
+```bash
+npx skills add Forest-Software-LLC/forest-agent-skills -g -a cursor -y
+```
+
+### VS Code
+
+[Add the Forest MCP server to VS Code](https://vscode.dev/redirect/mcp/install?name=forest&config=%7B%22type%22%3A%22http%22%2C%22url%22%3A%22https%3A%2F%2Fapi.forest.dev%2Fmcp%22%7D), then add the skill for GitHub Copilot:
+
+```bash
+npx skills add Forest-Software-LLC/forest-agent-skills -g -a github-copilot -y
+```
+
 ### Other agents
 
 ```bash
-npx skills add Forest-Software-LLC/forest-agent-skills
+npx skills add Forest-Software-LLC/forest-agent-skills -g
+npx add-mcp https://api.forest.dev/mcp -g
 ```
 
-The [skills CLI](https://github.com/vercel-labs/skills) installs the skill into Cursor, Codex, GitHub Copilot, Gemini CLI, OpenCode, Windsurf and more; it asks which agents, or pass `--agent`. You can also copy [`plugins/forest/skills/forest-packages`](plugins/forest/skills/forest-packages) into your agent's skills folder.
-
-Then connect the Forest MCP server, `https://api.forest.dev/mcp`, as a remote MCP server. The [Forest docs](https://docs.forest.dev/features/ai-agents) show the setup for Cursor, VS Code and other clients. Without it, the skill falls back to Forest's public HTTP API for public packages, where your agent can fetch URLs.
+Each asks which of your agents to set up: the [skills CLI](https://github.com/vercel-labs/skills) adds the skill to GitHub Copilot CLI, Gemini CLI, OpenCode, Windsurf and more, and [add-mcp](https://github.com/neon-solutions/add-mcp) connects the MCP server. You can also copy [`plugins/forest/skills/forest-packages`](plugins/forest/skills/forest-packages) into your agent's skills folder and add `https://api.forest.dev/mcp` as a remote MCP server yourself. Without the server, the skill falls back to Forest's public HTTP API for public packages, where your agent can fetch URLs.
 
 ## Signing in
 
-Public packages work without an account. The first time the agent needs your account, for your private packages or to publish, your client opens a Forest sign-in page that shows the app, your account and the permissions it asks for. Publishing is a separate permission, requested the first time the agent tries to publish, and your client asks you to confirm every publish.
+Public packages work without an account. When the agent needs your account, for your private packages or to publish, your client opens a Forest sign-in page that shows the app, your account and the permissions it asks for. In Claude Code, run `/mcp` and authenticate **forest**; in Codex, run `codex mcp login forest`. Publishing is a separate permission on that page, and your agent asks you before every publish.
 
 Apps you've connected are listed under **Connected apps** in your Forest profile settings, where you can disconnect them at any time.
 
 ## Data
 
-Nothing here runs code: the skill is instructions, and the plugin points Claude at Forest's MCP server. When the agent uses the Forest tools, it sends Forest what the tool needs: search text, package names, and, for a publish you approve, the package's files and details. Signed in, requests carry an access token for your account. Forest's [privacy policy](https://forest.dev/legal/privacy) covers how that data is handled.
+Nothing here runs code: the skill is instructions, and the plugin points your agent at Forest's MCP server. When the agent uses the Forest tools, it sends Forest what the tool needs: search text, package names, and, for a publish you approve, the package's files and details. Signed in, requests carry an access token for your account. Forest's [privacy policy](https://forest.dev/legal/privacy) covers how that data is handled.
 
 ## Contributing
 
