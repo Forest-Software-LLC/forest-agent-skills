@@ -54,6 +54,7 @@ If they want to go ahead, follow [references/publishing.md](references/publishin
 A `forest.json` marks a Forest project or package, and `forest-lock.json` pins exact versions and hashes. Commit both.
 
 - Add dependencies with `forest install scope/name` (alias `forest i`). It records a `^` range in `forest.json` and updates the lockfile. Don't write dependency entries by hand. In a folder without a `forest.json`, pass `--init roblox` or `--init uefn` so it doesn't stop to ask.
+- On Roblox, a project can have several dependency folders, called mounts (a `mounts` field in `forest.json`), such as a server-only `ServerPackages`. `forest install` adds to the default one; pass `--mount <path>` to install into another. See [references/roblox.md](references/roblox.md).
 - Never edit files inside installed packages: the next install overwrites them. To try changes to a dependency on Roblox, `forest link <path>` points it at a local copy of the package.
 - `forest update` moves every dependency to the newest version its range allows. `forest audit` shows newer major versions and a license report for the whole tree. `forest tree` shows what is installed and why.
 - `forest login`, `forest init` and `forest publish` ask questions in the terminal, so ask the user to run those themselves.
