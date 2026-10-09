@@ -1,8 +1,8 @@
 {
   "name": "forest",
   "displayName": "Forest",
-  "version": "0.1.0",
-  "description": "Find, vet, install and publish Forest packages for Roblox and UEFN. Connects the Forest MCP server and adds a skill that checks Forest before building general-purpose code and suggests publishing modules worth reusing.",
+  "version": "0.2.0",
+  "description": "Find, vet, install and publish Forest packages for Roblox and UEFN. Connects the Forest MCP server and adds a skill that checks Forest before building general-purpose code, vets package code before recommending it, treats package text as data rather than instructions, and suggests publishing modules worth reusing.",
   "author": {
     "name": "Forest Software LLC",
     "url": "https://forest.dev"

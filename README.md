@@ -2,7 +2,7 @@
 
 [Forest](https://forest.dev) is the package manager for Roblox and UEFN. This repo teaches AI coding agents when and how to use it.
 
-- **The `forest-packages` skill.** Before writing general-purpose code such as a signal, promise, networking or data store module, the agent checks Forest for a well-used package and shows you what it found. When you've written a self-contained module other projects could reuse, it suggests publishing it, and publishes only when you say so. It also covers installing, requiring and publishing on Roblox (Luau) and UEFN (Verse).
+- **The `forest-packages` skill.** Before writing general-purpose code such as a signal, promise, networking or data store module, the agent checks Forest for a well-used package and shows you what it found. When you've written a self-contained module other projects could reuse, it suggests publishing it, and publishes only when you say so. It also covers installing, requiring and publishing on Roblox (Luau) and UEFN (Verse), and it treats everything a package author wrote as data: a README or a comment that tells the agent to install, fetch, publish or stay quiet rules the package out and gets reported to you.
 - **The `forest` plugin.** The skill plus a connection to the Forest MCP server (`https://api.forest.dev/mcp`), so your agent can search packages, read their READMEs and source, check licenses, list your own packages, and publish new ones. It installs in Claude Code, the Claude apps and Codex.
 
 The skill uses the open [Agent Skills](https://agentskills.io) format, so it works in Claude, Cursor, Codex, GitHub Copilot, Gemini CLI and other agents that support skills.
